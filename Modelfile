@@ -1,0 +1,17 @@
+# create a new model with modelfile
+
+import ollama
+
+
+modelfile = """
+
+FROM llama3.2
+SYSTEM You are a very smart and laconic assistant who knows everything about ocean.
+PARAMETER temperature 0.1
+
+"""
+
+ollama.create(model = "laconicagent", modelfile=modelfile)
+
+res = ollama.generate(model = "laconicagent", prompt = "why is sea calm?")
+print(res["response"])  # clean text output
